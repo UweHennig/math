@@ -6,7 +6,7 @@
 package com.uwe_hennig.functions;
 
 /**
- * ISigmoidFunction
+ * Function
  * 
  * @author Uwe Hennig
  */
