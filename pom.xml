@@ -9,8 +9,8 @@
 		<compiler-optimize>false</compiler-optimize>
 		<compiler-showDeprecation>true</compiler-showDeprecation>
 		<compiler-showWarnings>true</compiler-showWarnings>
-		<compiler-source>1.14</compiler-source>
-		<compiler-target>1.14</compiler-target>
+		<compiler-source>23</compiler-source>
+		<compiler-target>23</compiler-target>
 	</properties>
 
 	<dependencies>
