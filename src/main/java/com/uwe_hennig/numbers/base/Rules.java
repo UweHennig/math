@@ -25,31 +25,31 @@ import java.util.Map;
  * @author Uwe Hennig
  */
 public class Rules {
-    private static Map<Base, Map<Base, Mult>> rules = new HashMap<>();
-    private static List<Base>                  Bases;
-    private static Bilinearform                bilinearform;
+    private static Map<Base, Map<Base, Mult>> RULES = new HashMap<>();
+    private static List<Base>                  BASES;
+    private static Bilinearform                BILINEARFORM;
 
     public static Mult rule(Base d1, Base d2) {
-        if (rules.get(d1) != null && rules.get(d1).get(d2) != null) {
-            return rules.get(d1).get(d2);
+        if (RULES.get(d1) != null && RULES.get(d1).get(d2) != null) {
+            return RULES.get(d1).get(d2);
         }
         return null;
     }
 
     public static List<Base> getBases() {
-        return Bases;
+        return BASES;
     }
 
     public static Bilinearform scalarproduct() {
-        return bilinearform;
+        return BILINEARFORM;
     }
 
     public static void useCayley() {
         Base[] cayleyBases = { R, I, J, K, L, M, N, O };
-        Bases = Arrays.asList(cayleyBases);
-        bilinearform = scalarProduct;
+        BASES = Arrays.asList(cayleyBases);
+        BILINEARFORM = scalarProduct;
 
-        rules = new HashMap<>();
+        RULES = new HashMap<>();
         addRule(R, I, (x, y) -> new Value(I, x * y));
         addRule(R, J, (x, y) -> new Value(J, x * y));
         addRule(R, K, (x, y) -> new Value(K, x * y));
@@ -123,11 +123,11 @@ public class Rules {
     }
 
     public static void useComplex() {
-        bilinearform = scalarProduct;
+        BILINEARFORM = scalarProduct;
         Base[] complexBases = { R, I };
-        Bases = Arrays.asList(complexBases);
+        BASES = Arrays.asList(complexBases);
 
-        rules = new HashMap<>();
+        RULES = new HashMap<>();
         addRule(R, R, (x, y) -> new Value(R, x * y));
         addRule(R, I, (x, y) -> new Value(I, x * y));
         addRule(I, R, (x, y) -> new Value(I, x * y));
@@ -135,11 +135,11 @@ public class Rules {
     }
 
     public static void useHamilton() {
-        bilinearform = scalarProduct;
+        BILINEARFORM = scalarProduct;
         Base[] hamiltonBases = { R, I, J, K };
-        Bases = Arrays.asList(hamiltonBases);
+        BASES = Arrays.asList(hamiltonBases);
 
-        rules = new HashMap<>();
+        RULES = new HashMap<>();
         addRule(R, R, (x, y) -> new Value(R, x * y));
         addRule(R, I, (x, y) -> new Value(I, x * y));
         addRule(R, J, (x, y) -> new Value(J, x * y));
@@ -162,11 +162,11 @@ public class Rules {
     }
 
     public static void useSplitQuarternion() {
-        bilinearform = splitQuaternionScalarProduct;
+        BILINEARFORM = splitQuaternionScalarProduct;
         Base[] splitQuaternionBases = { R, I, J, K };
-        Bases = Arrays.asList(splitQuaternionBases);
+        BASES = Arrays.asList(splitQuaternionBases);
 
-        rules = new HashMap<>();
+        RULES = new HashMap<>();
         addRule(R, R, (x, y) -> new Value(R, x * y));
         addRule(R, I, (x, y) -> new Value(I, x * y));
         addRule(R, J, (x, y) -> new Value(J, x * y));
@@ -189,10 +189,10 @@ public class Rules {
     }
 
     public static void useReal() {
-        bilinearform = scalarProduct;
+        BILINEARFORM = scalarProduct;
         Base[] realBases = { R };
-        Bases = Arrays.asList(realBases);
-        rules = new HashMap<>();
+        BASES = Arrays.asList(realBases);
+        RULES = new HashMap<>();
         addRule(R, R, (x, y) -> new Value(R, x * y));
     }
 
@@ -233,11 +233,11 @@ public class Rules {
     };
 
     private static void addRule(Base d1, Base d2, Mult rule) {
-        if (rules.get(d1) == null) {
-            rules.put(d1, new HashMap<>());
+        if (RULES.get(d1) == null) {
+            RULES.put(d1, new HashMap<>());
         }
-        if (rules.get(d1).get(d2) == null) {
-            rules.get(d1).put(d2, rule);
+        if (RULES.get(d1).get(d2) == null) {
+            RULES.get(d1).put(d2, rule);
         }
     }
 

@@ -3,7 +3,7 @@
  * Copyright (c) 2023 Uwe Hennig
  * All rights reserved.
  */
-package com.uwe_hennig.numbers;
+package com.uwe_hennig.numbers.base;
 
 
 import static com.uwe_hennig.numbers.base.Base.I;
@@ -14,8 +14,6 @@ import static com.uwe_hennig.numbers.base.Base.M;
 import static com.uwe_hennig.numbers.base.Base.N;
 import static com.uwe_hennig.numbers.base.Base.O;
 import static com.uwe_hennig.numbers.base.Base.R;
-import static com.uwe_hennig.numbers.base.Number.ONE;
-import static com.uwe_hennig.numbers.base.Number.ZERO;
 import static com.uwe_hennig.numbers.base.Value.iValue;
 import static com.uwe_hennig.numbers.base.Value.jValue;
 import static com.uwe_hennig.numbers.base.Value.kValue;
@@ -30,6 +28,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.uwe_hennig.numbers.Cayley;
+import com.uwe_hennig.numbers.Complex;
+import com.uwe_hennig.numbers.Hamilton;
+import com.uwe_hennig.numbers.Real;
 import com.uwe_hennig.numbers.base.Number;
 import com.uwe_hennig.numbers.base.Rules;
 import com.uwe_hennig.numbers.base.Value;
@@ -158,22 +160,6 @@ public class TestNumbers {
     }
 
     @Test
-    public void testConst() {
-        printHeadline("testConst");
-        Rules.useComplex();
-        assertNotNull(ONE());
-        assertNotNull(ZERO());
-
-        assertEquals("ONE not valid!", new Number(1.0D), ONE());
-        assertEquals("ZERO not valid!", new Number(0.0D), ZERO());
-
-        Rules.useComplex();
-        Number z = ONE().add(new Number(0.0D, 1.0D));
-        assertNotNull("Value is null!", z);
-        assertEquals("Values ar not equals", new Number(1, 1), z);
-    }
-
-    @Test
     public void testEquals() {
         printHeadline("testEquals");
         Rules.useComplex();
@@ -186,6 +172,10 @@ public class TestNumbers {
         a = new Number(1.0D, 1.0D, 0.0D);
         b = new Number(1.0D, 1.0D);
         assertTrue("Values are not equal!", a.equals(b));
+    }
+
+    private Number zero() {
+        return new Number();
     }
 
     @Test
@@ -201,17 +191,17 @@ public class TestNumbers {
         System.out.println("Complex: \t" + new Number(-1, 2));
 
         Rules.useHamilton();
-        System.out.println("Hamilton: \t" + ZERO().with(R, 2.3).with(K, 12.3));
-        System.out.println("Hamilton: \t" + ZERO().with(R, -2.23).with(K, 12.3));
-        System.out.println("Hamilton: \t" + ZERO().with(R, 2.23).with(K, -12.3));
+        System.out.println("Hamilton: \t" + zero().with(R, 2.3).with(K, 12.3));
+        System.out.println("Hamilton: \t" + zero().with(R, -2.23).with(K, 12.3));
+        System.out.println("Hamilton: \t" + zero().with(R, 2.23).with(K, -12.3));
 
         Rules.useSplitQuarternion();
-        System.out.println("Split: \t\t" + ZERO().with(R, 2.3).with(K, 12.3));
-        System.out.println("Split: \t\t" + ZERO().with(R, -2.23).with(K, 12.3));
-        System.out.println("Split: \t\t" + ZERO().with(R, 2.23).with(K, -12.3));
+        System.out.println("Split: \t\t" + zero().with(R, 2.3).with(K, 12.3));
+        System.out.println("Split: \t\t" + zero().with(R, -2.23).with(K, 12.3));
+        System.out.println("Split: \t\t" + zero().with(R, 2.23).with(K, -12.3));
 
         Rules.useCayley();
-        System.out.println("Cayley: \t" + ZERO().with(R, 1.0D));
+        System.out.println("Cayley: \t" + zero().with(R, 1.0D));
         System.out.println("Cayley: \t" + new Number(1, -2, 3, -4, 5, -6, 7, -8));
         System.out.println("Cayley: \t" + new Number(-11, -2, 3, -4, 5, -6, 7, 8));
         System.out.println("Cayley: \t" + new Number());
@@ -259,5 +249,4 @@ public class TestNumbers {
         System.out.println(msg);
         System.out.println("------------------------------");
     }
-
 }

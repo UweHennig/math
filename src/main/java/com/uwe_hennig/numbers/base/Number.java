@@ -14,25 +14,17 @@ import java.util.Locale;
 
 /**
  * Number
+ *
  * @author Uwe Hennig
  */
 public class Number {
     protected Value[] scalarValues = new Value[8];
 
-    private static class Constant {
-        static final Number ZERO = new Number(0.0D);
-        static final Number ONE = new Number(1.0D);
-
-        static final Number PI = new Number(Math.PI);
-        static final Number TWO_PI = new Number(2.0D * Math.PI);
-        static final Number E = new Number(Math.E);
-    }
-
     protected Number() {
         this(0.0D);
     }
 
-    protected Number(double ... values) {
+    protected Number(double... values) {
         int max = getBases().size();
 
         if (values.length > max) {
@@ -104,11 +96,11 @@ public class Number {
     }
 
     public boolean isZero() {
-        return this.equals(ZERO());
+        return getBases().stream().allMatch(d -> getScalarValue(d).value() == 0.0);
     }
 
-    public boolean isOne() {
-        return this.equals(ONE());
+    public boolean isReal() {
+        return getBases().stream().skip(1).allMatch(d -> getScalarValue(d).value() == 0.0);
     }
 
     public Number add(Number summand) {
@@ -214,7 +206,7 @@ public class Number {
             return String.format(Locale.ENGLISH, formatR, " ", 0D);
         }
 
-        if (isOne()) {
+        if (isReal()) {
             return String.format(Locale.ENGLISH, formatR, " ", 1D);
         }
 
@@ -223,14 +215,10 @@ public class Number {
         for (Base base : getBases()) {
             Value current = getScalarValue(base);
             if (base.equals(R)) {
-                builder.append(String.format(Locale.ENGLISH, formatR,
-                    current.value() >= 0? " " : "-",
-                    Math.abs(current.value())));
+                builder.append(String.format(Locale.ENGLISH, formatR, current.value() >= 0 ? " " : "-", Math.abs(current.value())));
             } else {
                 if (current.value() != 0.0) {
-                    builder.append(String.format(Locale.ENGLISH, formatX,
-                        current.value() >= 0? " + " : " - ",
-                        Math.abs(current.value()),
+                    builder.append(String.format(Locale.ENGLISH, formatX, current.value() >= 0 ? " + " : " - ", Math.abs(current.value()),
                         current.base().toString().toLowerCase()));
                 }
             }
@@ -264,14 +252,6 @@ public class Number {
     @Override
     public int hashCode() {
         return Arrays.hashCode(scalarValues);
-    }
-
-    public static Number ZERO() {
-        return Constant.ZERO;
-    }
-
-    public static Number ONE() {
-        return Constant.ONE;
     }
 
     protected Number newInstance() {
