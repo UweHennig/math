@@ -28,11 +28,11 @@ public class Number {
         static final Number E = new Number(Math.E);
     }
 
-    public Number() {
+    protected Number() {
         this(0.0D);
     }
 
-    public Number(double ... values) {
+    protected Number(double ... values) {
         int max = getBases().size();
 
         if (values.length > max) {
@@ -53,7 +53,7 @@ public class Number {
         }
     }
 
-    public Number(Base base, double value) {
+    protected Number(Base base, double value) {
         checkBase(base);
         for (Base b : Base.values()) {
             if (b.equals(base)) {
@@ -64,7 +64,7 @@ public class Number {
         }
     }
 
-    public Number(Number other) {
+    protected Number(Number other) {
         for (Base base : Base.values()) {
             setScalarValue(base, other.getScalarValue(base));
         }
