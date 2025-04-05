@@ -100,7 +100,18 @@ public class Number {
     }
 
     public boolean isReal() {
-        return getBases().stream().skip(1).allMatch(d -> getScalarValue(d).value() == 0.0);
+        return getBases().size() <= 1 ||
+            getBases().stream().skip(1).allMatch(d -> getScalarValue(d).value() == 0.0);
+    }
+
+    public boolean isComplex() {
+        return getBases().size() <= 2
+            || getBases().stream().skip(2).allMatch(d -> getScalarValue(d).value() == 0.0);
+    }
+
+    public boolean isHamilton() {
+        return getBases().size() <= 4
+            || getBases().stream().skip(4).allMatch(d -> getScalarValue(d).value() == 0.0);
     }
 
     public Number add(Number summand) {

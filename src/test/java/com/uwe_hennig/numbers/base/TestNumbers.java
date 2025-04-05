@@ -235,6 +235,15 @@ public class TestNumbers {
         printHeadline("testCayley");
         Cayley cayley = new Cayley(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0);
         System.out.println(cayley);
+
+        Cayley real = new Cayley(1.0);
+        assertTrue(real.isReal() && !real.isZero());
+
+        Cayley complex = new Cayley(1.0, 2.0);
+        assertTrue(complex.isComplex() && !complex.isZero());
+
+        Cayley hamilton= new Cayley(1.0, 2.0, 3.0, 4.0);
+        assertTrue(hamilton.isHamilton() && !hamilton.isZero());
     }
 
     @Test
@@ -242,6 +251,8 @@ public class TestNumbers {
         printHeadline("testReal");
         Real real= new Real(1.0);
         System.out.println(real);
+
+        assertTrue(real.isReal() && !real.isZero());
     }
 
     private void printHeadline(String msg) {
