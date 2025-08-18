@@ -9,7 +9,7 @@
 		<compiler-optimize>false</compiler-optimize>
 		<compiler-showDeprecation>true</compiler-showDeprecation>
 		<compiler-showWarnings>true</compiler-showWarnings>
-    	<java.version>23</java.version>	</properties>
+    	<java.version>24</java.version>	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
