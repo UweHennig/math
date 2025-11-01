@@ -9,6 +9,6 @@ package com.uwe_hennig.numbers.base;
  * MultiplicationRule
  * @author Uwe Hennig
  */
-public interface MultiplicationRule {
+interface MultiplicationRule {
     ScalarValue mult(Double x, Double y);
 }

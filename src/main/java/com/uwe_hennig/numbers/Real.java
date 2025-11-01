@@ -14,6 +14,6 @@ import com.uwe_hennig.numbers.base.RealContext;
  */
 public class Real extends AlgebraicNumber {
     public Real() {
-        super(new RealContext());
+        super(RealContext.getInstance());
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
 public class HamiltonContext extends AbstractAlgebraicContext {
     private static final HamiltonContext INSTANCE = new HamiltonContext();
 
-    public HamiltonContext() {
+    HamiltonContext() {
         rules = new EnumMap<>(ScalarBase.class);
         addRule(R, R, (x, y) -> new ScalarValue(x * y, R));
         addRule(R, I, (x, y) -> new ScalarValue(x * y, I));

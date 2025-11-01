@@ -9,8 +9,9 @@
 		<compiler-optimize>false</compiler-optimize>
 		<compiler-showDeprecation>true</compiler-showDeprecation>
 		<compiler-showWarnings>true</compiler-showWarnings>
-    		<java.version>25</java.version>	
-    	</properties>
+		<maven.compiler.release>24</maven.compiler.release>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -24,5 +25,18 @@
 			<version>1.2.16</version>
 		</dependency>
 	</dependencies>
+	
+  	<build>
+  		<plugins>
+			<plugin>
+	      		<groupId>org.apache.maven.plugins</groupId>
+	      		<artifactId>maven-compiler-plugin</artifactId>
+	      		<version>3.14.1</version>
+	      		<configuration>
+	        			<release>24</release>
+	  			</configuration>
+	    		</plugin>
+		</plugins>
+  	</build>
   
 </project>

@@ -14,6 +14,6 @@ import com.uwe_hennig.numbers.base.ComplexContext;
  */
 public class Complex extends AlgebraicNumber {
     public Complex() {
-        super(new ComplexContext());
+        super(ComplexContext.getInstance());
     }
 }

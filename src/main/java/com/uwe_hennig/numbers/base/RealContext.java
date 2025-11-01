@@ -17,7 +17,7 @@ import java.util.List;
 public class RealContext extends AbstractAlgebraicContext {
     private static final RealContext INSTANCE = new RealContext();
 
-    public RealContext() {
+    RealContext() {
         addRule(R, R, (x, y) -> new ScalarValue(x * y, R));
     }
 

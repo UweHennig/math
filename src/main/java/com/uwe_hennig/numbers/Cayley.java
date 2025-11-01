@@ -14,6 +14,6 @@ import com.uwe_hennig.numbers.base.CayleyContext;
  */
 public class Cayley extends AlgebraicNumber {
     public Cayley() {
-        super(new CayleyContext());
+        super(CayleyContext.getInstance());
     }
 }

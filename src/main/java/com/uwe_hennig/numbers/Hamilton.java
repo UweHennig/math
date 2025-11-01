@@ -14,7 +14,6 @@ import com.uwe_hennig.numbers.base.HamiltonContext;
  */
 public class Hamilton extends AlgebraicNumber {
     protected Hamilton() {
-        super(new HamiltonContext());
+        super(HamiltonContext.getInstance());
     }
-
 }

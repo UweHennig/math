@@ -18,7 +18,7 @@ import java.util.List;
 public class ComplexContext extends AbstractAlgebraicContext {
     private static final ComplexContext INSTANCE = new ComplexContext();
 
-    public ComplexContext() {
+    ComplexContext() {
         addRule(R, R, (x, y) -> new ScalarValue( x * y, R));
         addRule(R, I, (x, y) -> new ScalarValue( x * y, I));
         addRule(I, R, (x, y) -> new ScalarValue( x * y, I));

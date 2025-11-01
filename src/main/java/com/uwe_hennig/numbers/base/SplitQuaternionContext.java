@@ -19,7 +19,7 @@ import java.util.List;
 public class SplitQuaternionContext extends AbstractAlgebraicContext {
     private static final SplitQuaternionContext INSTANCE = new SplitQuaternionContext();
 
-    private SplitQuaternionContext() {
+    SplitQuaternionContext() {
         addRule(R, R, (x, y) -> new ScalarValue(x * y, R));
         addRule(R, I, (x, y) -> new ScalarValue(x * y, I));
         addRule(R, J, (x, y) -> new ScalarValue(x * y, J));
@@ -39,7 +39,6 @@ public class SplitQuaternionContext extends AbstractAlgebraicContext {
         addRule(K, I, (x, y) -> new ScalarValue(x * y, J));
         addRule(K, J, (x, y) -> new ScalarValue(x * y, I));
         addRule(K, K, (x, y) -> new ScalarValue(x * y, R));
-
     }
 
     public static SplitQuaternionContext getInstance() {
@@ -55,5 +54,4 @@ public class SplitQuaternionContext extends AbstractAlgebraicContext {
     public List<ScalarBase> getScalarBases() {
         return List.of(R, I, J, K);
     }
-
 }

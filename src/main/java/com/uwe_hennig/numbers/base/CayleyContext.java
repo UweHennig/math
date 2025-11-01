@@ -24,7 +24,7 @@ import java.util.List;
 public class CayleyContext extends AbstractAlgebraicContext {
     private static final CayleyContext INSTANCE = new CayleyContext();
 
-    public CayleyContext() {
+    CayleyContext() {
         addRule(R, R, (x, y) -> new ScalarValue(x * y, R));
         addRule(R, I, (x, y) -> new ScalarValue(x * y, I));
         addRule(R, J, (x, y) -> new ScalarValue(x * y, J));
