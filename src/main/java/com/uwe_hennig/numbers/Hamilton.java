@@ -1,35 +1,20 @@
 /**
  * @(#)Hamilton.java
- * Copyright (c) 2023 Uwe Hennig
+ * Copyright (c) 2025 Uwe Hennig
  * All rights reserved.
  */
 package com.uwe_hennig.numbers;
 
-import static com.uwe_hennig.numbers.base.Rules.useHamilton;
-
-import java.security.InvalidParameterException;
-
-import com.uwe_hennig.numbers.base.Number;
+import com.uwe_hennig.numbers.base.AlgebraicNumber;
+import com.uwe_hennig.numbers.base.HamiltonContext;
 
 /**
  * Hamilton
  * @author Uwe Hennig
  */
-public class Hamilton extends Number {
-    static {
-        useHamilton();
-    };
-
-    public Hamilton() {
-        super();
+public class Hamilton extends AlgebraicNumber {
+    protected Hamilton() {
+        super(new HamiltonContext());
     }
 
-    public Hamilton(double ... values) {
-        super(values);
-    }
-
-    @Override
-    protected Number newInstance() {
-        return new Hamilton();
-    }
 }

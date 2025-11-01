@@ -1,33 +1,19 @@
 /**
  * @(#)Real.java
- * Copyright (c) 2023 Uwe Hennig
+ * Copyright (c) 2025 Uwe Hennig
  * All rights reserved.
  */
 package com.uwe_hennig.numbers;
 
-import static com.uwe_hennig.numbers.base.Rules.useReal;
-
-import com.uwe_hennig.numbers.base.Number;
+import com.uwe_hennig.numbers.base.AlgebraicNumber;
+import com.uwe_hennig.numbers.base.RealContext;
 
 /**
  * Real
  * @author Uwe Hennig
  */
-public class Real extends Number {
-    static {
-        useReal();
-    };
-
+public class Real extends AlgebraicNumber {
     public Real() {
-        super();
-    }
-
-    public Real(double x) {
-        super(x);
-    }
-
-    @Override
-    protected Number newInstance() {
-        return new Real();
+        super(new RealContext());
     }
 }

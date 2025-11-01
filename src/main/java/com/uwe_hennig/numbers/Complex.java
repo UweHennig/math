@@ -1,37 +1,19 @@
 /**
  * @(#)Complex.java
- * Copyright (c) 2023 Uwe Hennig
+ * Copyright (c) 2025 Uwe Hennig
  * All rights reserved.
  */
 package com.uwe_hennig.numbers;
 
-import static com.uwe_hennig.numbers.base.Rules.useComplex;
-
-import com.uwe_hennig.numbers.base.Number;
+import com.uwe_hennig.numbers.base.AlgebraicNumber;
+import com.uwe_hennig.numbers.base.ComplexContext;
 
 /**
  * Complex
  * @author Uwe Hennig
  */
-public class Complex extends Number {
-    static {
-        useComplex();
-    };
-
+public class Complex extends AlgebraicNumber {
     public Complex() {
-        super();
-    }
-
-    public Complex(double x) {
-        super(x);
-    }
-
-    public Complex(double a, double ib) {
-        super(a, ib);
-    }
-
-    @Override
-    protected Number newInstance() {
-        return new Complex();
+        super(new ComplexContext());
     }
 }
