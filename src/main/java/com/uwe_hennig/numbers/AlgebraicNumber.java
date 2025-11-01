@@ -227,8 +227,9 @@ public class AlgebraicNumber {
                 return (sv.value() >= 0 ? " + " : " - ") + formatted + suffix;
             })
             .collect(Collectors.joining())
-            .replaceFirst("^ \\+ ", "   ");
-            //.trim();
+            .replaceFirst("^ \\+ ", "    ")
+            .replaceFirst("^ - ", " - ")
+            .replaceAll("  ", " ");
     }
 
     private static String format(double value) {
