@@ -3,7 +3,7 @@
  * Copyright (c) 2024 Uwe Hennig
  * All rights reserved.
  */
-package com.uwe_hennig.numbers.base;
+package com.uwe_hennig.numbers;
 
 import static com.uwe_hennig.numbers.base.ScalarBase.R;
 
@@ -13,6 +13,16 @@ import java.util.EnumSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import com.uwe_hennig.numbers.base.AlgebraicContext;
+import com.uwe_hennig.numbers.base.CayleyContext;
+import com.uwe_hennig.numbers.base.ComplexContext;
+import com.uwe_hennig.numbers.base.HamiltonContext;
+import com.uwe_hennig.numbers.base.MathException;
+import com.uwe_hennig.numbers.base.RealContext;
+import com.uwe_hennig.numbers.base.ScalarBase;
+import com.uwe_hennig.numbers.base.ScalarValue;
+import com.uwe_hennig.numbers.base.SplitQuaternionContext;
 
 /**
  * DivisionAlgebra

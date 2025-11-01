@@ -9,7 +9,7 @@ package com.uwe_hennig.numbers.base;
  * ScalarBase
  * @author Uwe Hennig
  */
-enum ScalarBase {
+public enum ScalarBase {
     R(0), I(1), J(2), K(3), L(4), M(5), N(6), O(7);
 
     private static final ScalarBase[] VALUES = values();
