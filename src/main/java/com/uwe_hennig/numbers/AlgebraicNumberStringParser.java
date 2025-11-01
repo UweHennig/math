@@ -20,7 +20,6 @@ import com.uwe_hennig.numbers.base.ScalarValue;
  */
 public class AlgebraicNumberStringParser {
     private final AlgebraicContext context;
-    private final ScalarValue[] scalarValues = new ScalarValue[8];
 
     public AlgebraicNumberStringParser(AlgebraicContext context) {
         this.context = context;
@@ -28,6 +27,7 @@ public class AlgebraicNumberStringParser {
 
     public AlgebraicNumber parse(String input) {
         try {
+            ScalarValue[] scalarValues = new ScalarValue[8];
             IntStream.range(0, 8).forEach(i -> scalarValues[i] = new ScalarValue(0.0, ScalarBase.of(i)));
 
             Pattern termPattern = Pattern.compile("([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)?(?:[eE][+-]?\\d+)?)([a-zA-Z]*)");
@@ -51,7 +51,7 @@ public class AlgebraicNumberStringParser {
                     throw new MathException("Base " + base + " not valid in context " + context.getClass().getSimpleName());
                 }
 
-                this.scalarValues[base.id()] = new ScalarValue(value, base);
+                scalarValues[base.id()] = new ScalarValue(value, base);
             }
 
             return new AlgebraicNumber(context, scalarValues);

@@ -18,6 +18,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 import com.uwe_hennig.numbers.base.CayleyContext;
+import com.uwe_hennig.numbers.base.ComplexContext;
 
 /**
  * ComplexTest
@@ -29,7 +30,7 @@ public class ComplexTest {
     @Test
     public void testParser() {
         try {
-            printHeadline("testSplitQuaternion");
+            printHeadline("testParser");
             final String[] testStrings = {
                 "i+k+o",
                 "-1+3i",
@@ -51,6 +52,12 @@ public class ComplexTest {
                 System.out.println("Result:  '" + n + "'");
                 System.out.println();
             }
+            AlgebraicNumberStringParser p = new AlgebraicNumberStringParser(ComplexContext.getInstance());
+            AlgebraicNumber number = p.parse("3+1i").add(p.parse("2-3i"));
+            System.out.println("complex test: (3 + i) + (2 - 3i) = (5 - 2i =)" + number);
+            AlgebraicNumber expected = complex().r(5).i(-2).create();
+            assertEquals(expected, number);
+
         } catch (Exception e) {
             fail("Parsing failed: " + e.getLocalizedMessage());
         }
