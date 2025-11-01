@@ -14,4 +14,8 @@ public class MathException extends RuntimeException {
     public MathException(String msg) {
         super(msg);
     }
+
+    public MathException(String msg, Exception exc) {
+        super(msg, exc);
+    }
 }
